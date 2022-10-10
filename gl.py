@@ -183,16 +183,18 @@ def glLine(x0,y0,x1,y1):
     compensation = 0
 
     y = y0
-    for x in range(x0, x1 + 1):
+    for x in range(x0,1+x1):
+        if pendiente:
+            renderizado.point(y, x)
+        else:
+            renderizado.point(x, y)
+            
         compensation += dy * 2
         
         if compensation >= limitation:
             y += 1 if y0 < y1 else -1
             limitation += dx * 2
             
-        if pendiente:
-            renderizado.point(y, x)
-        else:
-            renderizado.point(x, y)
+
 
     
